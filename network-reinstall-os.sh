@@ -6,7 +6,7 @@ SUBNET=$(ip -o -f inet addr show | awk '/scope global/{sub(/[^.]+\//,"0/",$4);pr
 value=$(( 0xffffffff ^ ((1 << (32 - $SUBNET)) - 1) ))
 NETMASK="$(( (value >> 24) & 0xff )).$(( (value >> 16) & 0xff )).$(( (value >> 8) & 0xff )).$(( value & 0xff ))"
 
-wget --no-check-certificate -qO network-reinstall.sh 'https://down.vpsaff.net/linux/dd/network-reinstall.sh' && chmod a+x network-reinstall.sh
+wget --no-check-certificate -qO network-reinstall.sh 'https://raw.githubusercontent.com/hulisang/system-reinstall/master/network-reinstall.sh' && chmod a+x network-reinstall.sh
 
 #Disabled SELinux
 if [ -f /etc/selinux/config ]; then
